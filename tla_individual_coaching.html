@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Love Architects | Individual Coaching</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Calm Harmony (Primary Background: #FBF8F6, Accent Text/Darker Neutral: #5A5A5A, Secondary Background/Cards: #FFFFFF, Subtle Accent 1: #D4AF37, Subtle Accent 2: #81B622, Call to Action: #E76F51) -->
+    <!-- Application Structure Plan: This SPA infographic is structured as a vertical, scrollable narrative. It starts with a welcoming hero section, transitions to the core challenges individuals face, presents The Love Architects' solution, details the 3-phase methodology with relevant charts for each phase's focus, highlights unique differentiators, and concludes with a clear call to action. This sequential flow is designed to guide the individual client through the understanding of their problem and the tangible benefits of engaging with The Love Architects. -->
+    <!-- Visualization & Content Choices:
+    - Hero Section: Goal: Inform. Method: Large, inviting text with subtle color. Justification: Sets a welcoming and clear tone for the service. Library: HTML/CSS.
+    - Challenges (Big Numbers): Goal: Inform. Method: Large, bold HTML text. Justification: Quickly highlights common pain points in a stark, relatable manner. Library: HTML/CSS.
+    - Our Solution (Icon Grid): Goal: Organize/Inform. Method: Unicode characters styled with Tailwind CSS cards. Justification: Presents key solution pillars cleanly and visually. Library: HTML/CSS.
+    - Methodology Flow (Vertical Timeline): Goal: Organize/Change (process). Method: Structured HTML divs as cards in a vertical sequence, with connecting lines. Justification: Clearly illustrates the step-by-step coaching process. Library: HTML/CSS.
+    - Phase 1 Chart (Self-Awareness & Goal Clarity): Goal: Change/Inform. Chosen Viz: Radar Chart. Justification: Visually represents growth across multiple personal dimensions (before/after coaching). Library: Chart.js/Canvas.
+    - Phase 2 Chart (Skill Proficiency): Goal: Change/Compare. Chosen Viz: Bar Chart. Justification: Shows improvement in distinct skills over time. Library: Chart.js/Canvas.
+    - Phase 3 Chart (Confidence & Fulfillment): Goal: Change/Inform. Chosen Viz: Line Chart. Justification: Tracks a projected positive trend in subjective well-being. Library: Chart.js/Canvas.
+    - Unique Differentiators (List with Icons): Goal: Inform/Organize. Method: Bullet points with Unicode icons. Justification: Clearly lists competitive advantages. Library: HTML/CSS.
+    CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FBF8F6; /* Primary Background */
+            color: #5A5A5A; /* Accent Text/Darker Neutral */
+        }
+        .text-primary-accent {
+            color: #E76F51; /* Call to Action/Highlight */
+        }
+        .bg-card {
+            background-color: #FFFFFF; /* Secondary Background/Cards */
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+        }
+        .btn-action {
+            background-color: #E76F51; /* Call to Action/Highlight */
+            color: #FFFFFF;
+            transition: background-color 0.3s ease;
+        }
+        .btn-action:hover {
+            background-color: #d46045;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px; /* Adjusted for aesthetic fit in cards */
+            margin-left: auto;
+            margin-right: auto;
+            height: 280px; /* Base height */
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px; /* Larger height on desktop */
+            }
+        }
+        .phase-timeline-connector {
+            position: absolute;
+            left: 20px; /* Aligns with dot */
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: #e5e7eb; /* Light grey line */
+        }
+        .phase-dot {
+            position: absolute;
+            left: 10px;
+            top: 0;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: #81B622; /* Subtle Accent 2 */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: bold;
+            z-index: 10;
+        }
+        .phase-content {
+            padding-left: 40px; /* Space for dot and line */
+            position: relative;
+        }
+    </style>
+</head>
+<body class="leading-relaxed">
+
+    <header class="bg-card shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <img src="image_58407a.jpg" alt="The Love Architects Logo" class="h-10 w-auto">
+            <nav class="hidden md:flex space-x-8">
+                <a href="#welcome" class="hover:text-primary-accent transition">Home</a>
+                <a href="#challenges" class="hover:text-primary-accent transition">Challenges</a>
+                <a href="#methodology" class="hover:text-primary-accent transition">Our Process</a>
+                <a href="#next-steps" class="hover:text-primary-accent transition">Next Steps</a>
+            </nav>
+            <a href="#contact" class="btn-action py-2 px-4 rounded-lg">Start Your Journey</a>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-12 md:py-20">
+        
+        <section id="welcome" class="text-center mb-20 md:mb-32">
+            <h2 class="text-4xl md:text-6xl font-black mb-4 leading-tight">Design Your Path to Fulfilling Relationships.</h2>
+            <p class="text-lg md:text-xl text-5A5A5A max-w-3xl mx-auto">Our Individual Coaching Programs empower you to cultivate deeper, more meaningful connections, starting with a profound sense of self-love and clarity.</p>
+        </section>
+
+        <section id="challenges" class="mb-20 md:mb-32">
+            <h3 class="text-3xl md:text-4xl font-bold text-center mb-12">The Search for Authentic Connection</h3>
+            <p class="text-lg text-5A5A5A text-center max-w-3xl mx-auto mb-12">Many individuals feel overwhelmed or disillusioned when navigating personal relationships and the modern dating landscape. We address these common pain points:</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-center">
+                <div class="bg-card p-8 rounded-lg">
+                    <div class="text-5xl font-extrabold text-primary-accent mb-4">💔</div>
+                    <p class="font-medium">Repetitive negative dating patterns</p>
+                </div>
+                <div class="bg-card p-8 rounded-lg">
+                    <div class="text-5xl font-extrabold text-primary-accent mb-4">🗣️</div>
+                    <p class="font-medium">Struggles with clear and effective communication</p>
+                </div>
+                <div class="bg-card p-8 rounded-lg">
+                    <div class="text-5xl font-extrabold text-primary-accent mb-4">✨</div>
+                    <p class="font-medium">Lack of confidence or self-worth in relationships</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="solution" class="bg-FBF8F6 -mx-6 px-6 py-20 md:py-28 mb-20 md:mb-32">
+             <h3 class="text-3xl md:text-4xl font-bold text-center mb-12">Your Personalized Journey to Love</h3>
+             <p class="text-lg text-5A5A5A text-center max-w-3xl mx-auto mb-12">Our individual coaching provides tailored guidance to overcome obstacles and cultivate the connections you truly desire.</p>
+             <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10">
+                <div class="flex items-start space-x-6">
+                    <div class="text-4xl text-[#81B622]">💖</div>
+                    <div>
+                        <h4 class="text-xl font-bold mb-2">Finding the Right Partner</h4>
+                        <p class="text-5A5A5A">Identify your values, break old patterns, and develop strategies for authentic connection.</p>
+                    </div>
+                </div>
+                <div class="flex items-start space-x-6">
+                    <div class="text-4xl text-[#81B622]">🌿</div>
+                    <div>
+                        <h4 class="text-xl font-bold mb-2">Overcoming Relationship Obstacles</h4>
+                        <p class="text-5A5A5A">Improve communication, set healthy boundaries, and heal from past relationship experiences.</p>
+                    </div>
+                </div>
+                <div class="flex items-start space-x-6">
+                    <div class="text-4xl text-[#81B622]">✨</div>
+                    <div>
+                        <h4 class="text-xl font-bold mb-2">Cultivating Inner Harmony & Self-Love</h4>
+                        <p class="text-5A5A5A">Build self-awareness and emotional resilience as the foundation for all healthy relationships.</p>
+                    </div>
+                </div>
+                <div class="flex items-start space-x-6">
+                    <div class="text-4xl text-[#81B622]">🌐</div>
+                    <div>
+                        <h4 class="text-xl font-bold mb-2">Multilingual & Cultural Sensitivity</h4>
+                        <p class="text-5A5A5A">Receive support in English, Spanish, or Turkish, navigating international relationship nuances.</p>
+                    </div>
+                </div>
+             </div>
+        </section>
+
+        <section id="methodology" class="mb-20 md:mb-32">
+            <h3 class="text-3xl md:text-4xl font-bold text-center mb-16">Our 3-Phase Coaching Methodology</h3>
+            <p class="text-lg text-5A5A5A text-center max-w-3xl mx-auto mb-12">Our structured methodology ensures a clear path to your relationship goals, with tangible progress at every step.</p>
+            <div class="relative max-w-xl mx-auto">
+                <div class="phase-timeline-connector"></div>
+
+                <div class="mb-12 phase-content">
+                    <div class="phase-dot">1</div>
+                    <div class="bg-card p-8 rounded-lg">
+                        <h4 class="text-xl font-bold mb-2">Phase 1: Discovery & Visioning</h4>
+                        <p class="text-5A5A5A mb-6">We delve into your relationship history, personal values, and aspirations to define a clear, inspiring vision for your future connections.</p>
+                        <h5 class="font-bold text-center mb-2">Outcome: Clarity & Direction</h5>
+                        <div class="chart-container">
+                            <canvas id="clarityChart"></canvas>
+                        </div>
+                        <p class="text-center text-sm text-5A5A5A mt-2">Perceived Clarity & Readiness Score (Pre vs. Post Phase 1)</p>
+                    </div>
+                </div>
+
+                <div class="mb-12 phase-content">
+                    <div class="phase-dot">2</div>
+                    <div class="bg-card p-8 rounded-lg">
+                        <h4 class="text-xl font-bold mb-2">Phase 2: Strategy Design & Skill Building</h4>
+                        <p class="text-5A5A5A mb-6">Develop personalized strategies, acquire essential communication and emotional intelligence skills, and transform limiting beliefs that previously held you back.</p>
+                        <h5 class="font-bold text-center mb-2">Outcome: Skill & Mindset Shift</h5>
+                        <div class="chart-container">
+                            <canvas id="skillsChart"></canvas>
+                        </div>
+                        <p class="text-center text-sm text-5A5A5A mt-2">Self-Assessed Skill Proficiency (Before vs. After Phase 2)</p>
+                    </div>
+                </div>
+
+                <div class="phase-content">
+                    <div class="phase-dot">3</div>
+                    <div class="bg-card p-8 rounded-lg">
+                        <h4 class="text-xl font-bold mb-2">Phase 3: Implementation & Sustained Growth</h4>
+                        <p class="text-5A5A5A mb-6">Integrate new behaviors into your daily life, apply strategies in real-world scenarios, track progress, and establish practices for long-term relational well-being.</p>
+                        <h5 class="font-bold text-center mb-2">Outcome: Confidence & Fulfillment</h5>
+                        <div class="chart-container">
+                            <canvas id="fulfillmentChart"></canvas>
+                        </div>
+                        <p class="text-center text-sm text-5A5A5A mt-2">Projected Growth in Relational Confidence & Fulfillment</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="differentiators" class="bg-FBF8F6 -mx-6 px-6 py-20 md:py-28 mb-20 md:mb-32">
+            <h3 class="text-3xl md:text-4xl font-bold text-center mb-12">What Makes Your Journey Unique with Us</h3>
+            <p class="text-lg text-5A5A5A text-center max-w-3xl mx-auto mb-12">The Love Architects brings unparalleled depth and flexibility to your personal coaching experience.</p>
+            <div class="max-w-4xl mx-auto space-y-8">
+                <div class="flex items-start space-x-4 bg-card p-6 rounded-lg">
+                    <div class="text-4xl text-[#D4AF37]">✨</div>
+                    <div>
+                        <h4 class="text-xl font-bold mb-1">Optional Dual-Perspective Coaching</h4>
+                        <p class="text-5A5A5A">Even for individual sessions, you have the unique opportunity to gain insights from *both* a male and female expert perspective (Oscar and Meltem), offering a balanced and comprehensive understanding of relational dynamics. You can also choose to work with a single coach.</p>
+                    </div>
+                </div>
+                <div class="flex items-start space-x-4 bg-card p-6 rounded-lg">
+                    <div class="text-4xl text-[#D4AF37]">🗣️</div>
+                    <div>
+                        <h4 class="text-xl font-bold mb-1">Multilingual & Culturally Intelligent Support</h4>
+                        <p class="text-5A5A5A">Receive coaching comfortably in English, Spanish, or Turkish, with deep understanding of cultural nuances, especially valuable for those in international dating contexts.</p>
+                    </div>
+                </div>
+                <div class="flex items-start space-x-4 bg-card p-6 rounded-lg">
+                    <div class="text-4xl text-[#D4AF37]">🌱</div>
+                    <div>
+                        <h4 class="text-xl font-bold mb-1">Holistic & Sustainable Growth</h4>
+                        <p class="text-5A5A5A">Our focus extends beyond surface-level advice to cultivating self-love, emotional resilience, and practical skills for lasting personal and relational well-being.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="contact" class="text-center">
+            <h3 class="text-3xl md:text-4xl font-bold mb-4">Ready to Architect Your Love Life?</h3>
+            <p class="text-lg text-5A5A5A max-w-2xl mx-auto mb-8">Your journey to deeper connection and greater fulfillment starts here. Schedule your complimentary discovery call today.</p>
+            <a href="mailto:contact@thelovearchitects.com" class="btn-action py-4 px-8 rounded-lg text-xl">Schedule Your Discovery Call</a>
+        </section>
+
+    </main>
+    
+    <footer class="bg-5A5A5A text-white mt-20 md:mt-32">
+        <div class="container mx-auto px-6 py-8 text-center">
+            <p>&copy; 2025 The Love Architects. All Rights Reserved.</p>
+            <p class="text-sm text-gray-300 mt-2">Designing Your Foundation for Lasting Love.</p>
+        </div>
+    </footer>
+
+    <script>
+        const chartColors = {
+            mainAccent: '#E76F51', /* Call to Action/Highlight */
+            subtleAccent: '#81B622', /* Subtle Accent 2 */
+            lightGray: '#e5e7eb', /* For chart grids/labels */
+            darkNeutral: '#5A5A5A', /* For text within charts */
+            subtleGold: '#D4AF37' /* Subtle Accent 1 */
+        };
+
+        const chartTooltipOptions = {
+            plugins: {
+                tooltip: {
+                    callbacks: {
+                        title: function(tooltipItems) {
+                            const item = tooltipItems[0];
+                            let label = item.chart.data.labels[item.dataIndex];
+                            if (Array.isArray(label)) {
+                              return label.join(' ');
+                            }
+                            return label;
+                        }
+                    }
+                }
+            }
+        };
+        
+        function wrapLabel(str, maxWidth = 16) {
+            if (str.length <= maxWidth) {
+                return str;
+            }
+            const words = str.split(' ');
+            let lines = [];
+            let currentLine = '';
+            words.forEach(word => {
+                if ((currentLine + ' ' + word).trim().length > maxWidth && currentLine.length > 0) {
+                    lines.push(currentLine);
+                    currentLine = word;
+                } else {
+                    currentLine = (currentLine + ' ' + word).trim();
+                }
+            });
+            lines.push(currentLine);
+            return lines;
+        }
+
+        // Phase 1 Chart: Clarity & Readiness
+        const clarityLabels = ['Self-Awareness', 'Goal Clarity', 'Relationship Needs', 'Confidence'].map(label => wrapLabel(label));
+        new Chart(document.getElementById('clarityChart'), {
+            type: 'radar',
+            data: {
+                labels: clarityLabels,
+                datasets: [
+                    {
+                        label: 'Pre-Coaching Assessment',
+                        data: [4, 5, 6, 4],
+                        backgroundColor: 'rgba(229, 111, 81, 0.2)', /* mainAccent with transparency */
+                        borderColor: chartColors.mainAccent,
+                        pointBackgroundColor: chartColors.mainAccent,
+                        pointBorderColor: '#fff',
+                        pointHoverBackgroundColor: '#fff',
+                        pointHoverBorderColor: chartColors.mainAccent
+                    },
+                    {
+                        label: 'Post-Phase 1 Clarity',
+                        data: [8, 9, 8, 7],
+                        backgroundColor: 'rgba(129, 182, 34, 0.2)', /* subtleAccent with transparency */
+                        borderColor: chartColors.subtleAccent,
+                        pointBackgroundColor: chartColors.subtleAccent,
+                        pointBorderColor: '#fff',
+                        pointHoverBackgroundColor: '#fff',
+                        pointHoverBorderColor: chartColors.subtleAccent
+                    }
+                ]
+            },
+            options: {
+                ...chartTooltipOptions,
+                maintainAspectRatio: false,
+                scales: {
+                    r: {
+                        angleLines: { color: chartColors.lightGray },
+                        grid: { color: chartColors.lightGray },
+                        pointLabels: { font: { size: 10 }, color: chartColors.darkNeutral },
+                        ticks: { backdropColor: 'rgba(255, 255, 255, 0.75)', color: chartColors.darkNeutral, beginAtZero: true, max: 10, stepSize: 2 }
+                    }
+                },
+                plugins: {
+                    ...chartTooltipOptions.plugins,
+                    legend: { position: 'bottom', labels: { color: chartColors.darkNeutral } }
+                }
+            }
+        });
+
+        // Phase 2 Chart: Skill Proficiency
+        const skillsLabels = ['Communication', 'Boundary Setting', 'Conflict Resolution', 'Emotional Intelligence'].map(label => wrapLabel(label));
+        new Chart(document.getElementById('skillsChart'), {
+            type: 'bar',
+            data: {
+                labels: skillsLabels,
+                datasets: [{
+                    label: 'Skill Proficiency (0-10 Scale)',
+                    data: [7, 6, 5, 8],
+                    backgroundColor: chartColors.subtleAccent,
+                    borderColor: chartColors.subtleAccent,
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                ...chartTooltipOptions,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 10,
+                        title: { display: true, text: 'Proficiency Score', color: chartColors.darkNeutral },
+                        ticks: { color: chartColors.darkNeutral }
+                    },
+                    x: {
+                        ticks: { color: chartColors.darkNeutral }
+                    }
+                },
+                plugins: {
+                    ...chartTooltipOptions.plugins,
+                    legend: { display: false }
+                }
+            }
+        });
+
+        // Phase 3 Chart: Confidence & Fulfillment
+        new Chart(document.getElementById('fulfillmentChart'), {
+            type: 'line',
+            data: {
+                labels: ['Start', 'Month 1', 'Month 2', 'Month 3'],
+                datasets: [{
+                    label: 'Happiness & Fulfillment Score (0-10)',
+                    data: [5, 6.5, 8, 9],
+                    fill: true,
+                    backgroundColor: 'rgba(229, 111, 81, 0.2)', /* mainAccent with transparency */
+                    borderColor: chartColors.mainAccent,
+                    tension: 0.3,
+                    pointBackgroundColor: chartColors.subtleGold,
+                    pointRadius: 5
+                }]
+            },
+            options: {
+                ...chartTooltipOptions,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 10,
+                        title: { display: true, text: 'Score', color: chartColors.darkNeutral },
+                        ticks: { color: chartColors.darkNeutral }
+                    },
+                    x: {
+                        ticks: { color: chartColors.darkNeutral }
+                    }
+                },
+                plugins: {
+                    ...chartTooltipOptions.plugins,
+                    legend: { display: false }
+                }
+            }
+        });
+        
+        document.querySelectorAll('header nav a, a[href="#contact"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                     window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Love Architects | Workshops & Seminars</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Calm Harmony (Primary Background: #FBF8F6, Accent Text/Darker Neutral: #5A5A5A, Secondary Background/Cards: #FFFFFF, Subtle Accent 1: #D4AF37, Subtle Accent 2: #81B622, Call to Action: #E76F51) -->
+    <!-- Application Structure Plan: This SPA infographic is structured to highlight the flexibility and targeted impact of workshops. It begins with a hero section, outlines the challenge of finding focused learning, presents The Love Architects' solution, details the 3-phase learning methodology with a chart on skill acquisition, showcases key differentiators (live vs. on-demand, multilingual), provides examples, and concludes with a call to action. The design emphasizes ease of access and specific skill development. -->
+    <!-- Visualization & Content Choices:
+    - Hero Section: Goal: Inform. Method: Large, inviting text with subtle color. Justification: Sets a clear tone for learning. Library: HTML/CSS.
+    - Challenges (Text & Icons): Goal: Inform. Method: Bullet points with Unicode icons. Justification: Lists common learning obstacles concisely. Library: HTML/CSS.
+    - Our Solution (Icon Grid with Labels): Goal: Organize/Inform. Method: Unicode characters styled with Tailwind CSS cards. Justification: Presents key offerings (live, on-demand, multilingual) visually. Library: HTML/CSS.
+    - Methodology Flow (Linear Steps): Goal: Organize/Change (process). Method: Structured HTML divs as cards in a horizontal-ish flow (adapting to responsive layout). Justification: Illustrates the learning journey within a workshop. Library: HTML/CSS.
+    - Learning Impact Chart (Skill Acquisition): Goal: Change/Inform. Chosen Viz: Line Chart. Justification: Shows projected skill improvement over time within a workshop series. Library: Chart.js/Canvas.
+    - Differentiators (Cards with Icons): Goal: Inform/Organize. Method: Cards with Unicode icons and text. Justification: Highlights unique selling points like flexibility and cultural intelligence. Library: HTML/CSS.
+    - Example Topics (List): Goal: Inform. Method: Simple HTML list. Justification: Provides concrete examples of workshop content. Library: HTML/CSS.
+    CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FBF8F6; /* Primary Background */
+            color: #5A5A5A; /* Accent Text/Darker Neutral */
+        }
+        .text-primary-accent {
+            color: #E76F51; /* Call to Action/Highlight */
+        }
+        .bg-card {
+            background-color: #FFFFFF; /* Secondary Background/Cards */
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+        }
+        .btn-action {
+            background-color: #E76F51; /* Call to Action/Highlight */
+            color: #FFFFFF;
+            transition: background-color 0.3s ease;
+        }
+        .btn-action:hover {
+            background-color: #d46045;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 280px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        .learning-step-card {
+            @apply bg-card p-6 rounded-lg text-center flex flex-col items-center justify-center;
+            min-height: 200px; /* Ensure visual consistency in grid */
+        }
+        .arrow-icon {
+            @apply text-5A5A5A text-4xl hidden md:block; /* Show on desktop for flow */
+        }
+    </style>
+</head>
+<body class="leading-relaxed">
+
+    <header class="bg-card shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <img src="image_58407a.jpg" alt="The Love Architects Logo" class="h-10 w-auto">
+            <nav class="hidden md:flex space-x-8">
+                <a href="#welcome" class="hover:text-primary-accent transition">Home</a>
+                <a href="#solution" class="hover:text-primary-accent transition">Our Solution</a>
+                <a href="#methodology" class="hover:text-primary-accent transition">Methodology</a>
+                <a href="#next-steps" class="hover:text-primary-accent transition">Next Steps</a>
+            </nav>
+            <a href="#contact" class="btn-action py-2 px-4 rounded-lg">Explore Workshops</a>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-12 md:py-20">
+        
+        <section id="welcome" class="text-center mb-20 md:mb-32">
+            <h2 class="text-4xl md:text-6xl font-black mb-4 leading-tight">Elevate Your Relationships: Engaging Workshops & Seminars.</h2>
+            <p class="text-lg md:text-xl text-5A5A5A max-w-3xl mx-auto">Our Specialized Workshops & Seminars offer accessible, focused learning to sharpen your relational skills and foster immediate, positive shifts in your love life.</p>
+        </section>
+
+        <section id="challenges" class="mb-20 md:mb-32">
+            <h3 class="text-3xl md:text-4xl font-bold text-center mb-12">Focused Growth, Flexible Learning</h3>
+            <p class="text-lg text-5A5A5A text-center max-w-3xl mx-auto mb-12">You seek targeted insights without the commitment of full coaching. We provide expert-led, actionable content on your terms:</p>
+            <div class="max-w-4xl mx-auto space-y-4">
+                <div class="flex items-center space-x-4">
+                    <div class="text-2xl text-primary-accent">⏰</div>
+                    <p class="font-medium">Finding quality content that fits a busy schedule.</p>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <div class="text-2xl text-primary-accent">🎯</div>
+                    <p class="font-medium">Needing guidance on specific, niche relationship topics.</p>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <div class="text-2xl text-primary-accent">🗣️</div>
+                    <p class="font-medium">Desire for culturally sensitive and multilingual learning.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="solution" class="bg-FBF8F6 -mx-6 px-6 py-20 md:py-28 mb-20 md:mb-32">
+             <h3 class="text-3xl md:text-4xl font-bold text-center mb-12">Expert-Led, Flexible Learning Solutions</h3>
+             <p class="text-lg text-5A5A5A text-center max-w-3xl mx-auto mb-12">Our diverse offerings provide precise insights and actionable strategies to empower your relational growth.</p>
+             <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-card p-6 rounded-lg text-center">
+                    <div class="text-5xl mb-4 text-[#81B622]">▶️</div>
+                    <h4 class="text-xl font-bold mb-2">Live Online Workshops</h4>
+                    <p class="text-5A5A5A">Interactive, real-time sessions for direct engagement with coaches and peers, including live Q&A.</p>
+                </div>
+                <div class="bg-card p-6 rounded-lg text-center">
+                    <div class="text-5xl mb-4 text-[#81B622]">📚</div>
+                    <h4 class="text-xl font-bold mb-2">On-Demand Seminars</h4>
+                    <p class="text-5A5A5A">Pre-recorded, self-paced modules accessible anytime, anywhere, for convenient, flexible learning.</p>
+                </div>
+                <div class="bg-card p-6 rounded-lg text-center">
+                    <div class="text-5xl mb-4 text-[#81B622]">🗣️</div>
+                    <h4 class="text-xl font-bold mb-2">Multilingual Content</h4>
+                    <p class="text-5A5A5A">Workshops and seminars available with cultural sensitivity and content in English, Spanish, and Turkish.</p>
+                </div>
+             </div>
+        </section>
+
+        <section id="methodology" class="mb-20 md:mb-32">
+            <h3 class="text-3xl md:text-4xl font-bold text-center mb-16">Our 3-Phase Structured Learning Methodology</h3>
+            <p class="text-lg text-5A5A5A text-center max-w-3xl mx-auto mb-12">Each workshop is designed for maximum impact, delivering clear understanding and practical skill acquisition.</p>
+            <div class="flex flex-col md:flex-row items-center justify-center space-y-8 md:space-y-0 md:space-x-8">
+                <div class="learning-step-card w-full md:w-1/3">
+                    <div class="text-4xl font-bold text-primary-accent mb-2">1.</div>
+                    <h4 class="text-xl font-bold mb-2">Foundational Understanding</h4>
+                    <p class="text-5A5A5A">Introduction of core concepts, key principles, and foundational tools for the topic.</p>
+                </div>
+                <div class="arrow-icon">➡️</div>
+                <div class="learning-step-card w-full md:w-1/3">
+                    <div class="text-4xl font-bold text-primary-accent mb-2">2.</div>
+                    <h4 class="text-xl font-bold mb-2">Practical Application</h4>
+                    <p class="text-5A5A5A">Engage in exercises, case studies, or discussions to apply and internalize new skills.</p>
+                </div>
+                <div class="arrow-icon">➡️</div>
+                <div class="learning-step-card w-full md:w-1/3">
+                    <div class="text-4xl font-bold text-primary-accent mb-2">3.</div>
+                    <h4 class="text-xl font-bold mb-2">Integration & Growth</h4>
+                    <p class="text-5A5A5A">Clear steps for integrating learned material into daily life and pathways for continued development.</p>
+                </div>
+            </div>
+
+            <div class="mt-16 bg-card p-8 rounded-lg max-w-2xl mx-auto">
+                <h5 class="font-bold text-center mb-4">Projected Skill Improvement from Workshop Engagement</h5>
+                <div class="chart-container">
+                    <canvas id="skillAcquisitionChart"></canvas>
+                </div>
+                <p class="text-center text-sm text-5A5A5A mt-2">Self-Assessed Skill Level (Pre-Workshop vs. Post-Workshop)</p>
+            </div>
+        </section>
+
+        <section id="example-topics" class="bg-FBF8F6 -mx-6 px-6 py-20 md:py-28 mb-20 md:mb-32">
+            <h3 class="text-3xl md:text-4xl font-bold text-center mb-12">Popular Workshop & Seminar Topics</h3>
+            <p class="text-lg text-5A5A5A text-center max-w-3xl mx-auto mb-12">Discover focused insights on critical areas for your relationship growth:</p>
+            <div class="max-w-xl mx-auto space-y-4">
+                <ul class="list-none space-y-2 text-lg text-5A5A5A">
+                    <li class="flex items-center"><span class="text-primary-accent text-2xl mr-3">✔️</span>Conscious Dating for Singles</li>
+                    <li class="flex items-center"><span class="text-primary-accent text-2xl mr-3">✔️</span>Mastering Intercultural Communication in Relationships</li>
+                    <li class="flex items-center"><span class="text-primary-accent text-2xl mr-3">✔️</span>Conflict to Connection: Tools for Couples</li>
+                    <li class="flex items-center"><span class="text-primary-accent text-2xl mr-3">✔️</span>Love Beyond Borders: Thriving in International Relationships</li>
+                    <li class="flex items-center"><span class="text-primary-accent text-2xl mr-3">✔️</span>The Foundations for Love Formula</li>
+                </ul>
+            </div>
+        </section>
+        
+        <section id="contact" class="text-center">
+            <h3 class="text-3xl md:text-4xl font-bold mb-4">Ready to Sharpen Your Relational Toolkit?</h3>
+            <p class="text-lg text-5A5A5A max-w-2xl mx-auto mb-8">Explore our upcoming live workshops or browse our library of on-demand seminars directly on our website.</p>
+            <a href="mailto:contact@thelovearchitects.com" class="btn-action py-4 px-8 rounded-lg text-xl">View Workshop Schedule</a>
+        </section>
+
+    </main>
+    
+    <footer class="bg-5A5A5A text-white mt-20 md:mt-32">
+        <div class="container mx-auto px-6 py-8 text-center">
+            <p>&copy; 2025 The Love Architects. All Rights Reserved.</p>
+            <p class="text-sm text-gray-300 mt-2">Designing Your Foundation for Lasting Love.</p>
+        </div>
+    </footer>
+
+    <script>
+        const chartColors = {
+            mainAccent: '#E76F51', /* Call to Action/Highlight */
+            subtleAccent: '#81B622', /* Subtle Accent 2 */
+            lightGray: '#e5e7eb', /* For chart grids/labels */
+            darkNeutral: '#5A5A5A', /* For text within charts */
+            subtleGold: '#D4AF37' /* Subtle Accent 1 */
+        };
+
+        const chartTooltipOptions = {
+            plugins: {
+                tooltip: {
+                    callbacks: {
+                        title: function(tooltipItems) {
+                            const item = tooltipItems[0];
+                            let label = item.chart.data.labels[item.dataIndex];
+                            if (Array.isArray(label)) {
+                              return label.join(' ');
+                            }
+                            return label;
+                        }
+                    }
+                }
+            }
+        };
+        
+        function wrapLabel(str, maxWidth = 16) {
+            if (str.length <= maxWidth) {
+                return str;
+            }
+            const words = str.split(' ');
+            let lines = [];
+            let currentLine = '';
+            words.forEach(word => {
+                if ((currentLine + ' ' + word).trim().length > maxWidth && currentLine.length > 0) {
+                    lines.push(currentLine);
+                    currentLine = word;
+                } else {
+                    currentLine = (currentLine + ' ' + word).trim();
+                }
+            });
+            lines.push(currentLine);
+            return lines;
+        }
+
+        // Skill Acquisition Chart (Line Chart for workshop impact)
+        new Chart(document.getElementById('skillAcquisitionChart'), {
+            type: 'line',
+            data: {
+                labels: ['Pre-Workshop', 'Post-Workshop', '1-Month Follow-up'],
+                datasets: [{
+                    label: 'Average Skill Level (1-10)',
+                    data: [4, 7.5, 8],
+                    fill: true,
+                    backgroundColor: 'rgba(129, 182, 34, 0.2)', /* subtleAccent with transparency */
+                    borderColor: chartColors.subtleAccent,
+                    tension: 0.3,
+                    pointBackgroundColor: chartColors.mainAccent,
+                    pointRadius: 5
+                }]
+            },
+            options: {
+                ...chartTooltipOptions,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 10,
+                        title: { display: true, text: 'Skill Level', color: chartColors.darkNeutral },
+                        ticks: { color: chartColors.darkNeutral }
+                    },
+                    x: {
+                        ticks: { color: chartColors.darkNeutral }
+                    }
+                },
+                plugins: {
+                    ...chartTooltipOptions.plugins,
+                    legend: { display: false }
+                }
+            }
+        });
+        
+        document.querySelectorAll('header nav a, a[href="#contact"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                     window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+    </script>
+</body>
+</html>

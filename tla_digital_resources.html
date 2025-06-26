@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Love Architects | Digital Resources</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Calm Harmony (Primary Background: #FBF8F6, Accent Text/Darker Neutral: #5A5A5A, Secondary Background/Cards: #FFFFFF, Subtle Accent 1: #D4AF37, Subtle Accent 2: #81B622, Call to Action: #E76F51) -->
+    <!-- Application Structure Plan: This SPA infographic focuses on accessibility and self-paced learning. It features a hero section, outlines the need for flexible resources, presents The Love Architects' solution, visually details the types of resources available, explains the self-directed learning methodology, highlights key differentiators, and concludes with a call to action. The layout emphasizes ease of access and diverse offerings. -->
+    <!-- Visualization & Content Choices:
+    - Hero Section: Goal: Inform. Method: Large, inviting text with subtle color. Justification: Sets a clear tone for accessible learning. Library: HTML/CSS.
+    - Challenges (Text & Icons): Goal: Inform. Method: Bullet points with Unicode icons. Justification: Lists common needs for self-paced learning concisely. Library: HTML/CSS.
+    - Our Solution (Icon Grid for Resource Types): Goal: Organize/Inform. Method: Unicode characters styled with Tailwind CSS cards. Justification: Visually categorizes the different types of digital resources offered. Library: HTML/CSS.
+    - Methodology Flow (Circular/Iterative Diagram): Goal: Organize/Change (process). Method: Structured HTML divs and Unicode arrows in a circular flow. Justification: Represents the continuous and self-paced nature of digital learning. Library: HTML/CSS.
+    - Engagement & Growth Chart: Goal: Change/Inform. Chosen Viz: Doughnut Chart. Justification: Shows the contribution of different resource types to user engagement/growth. Library: Chart.js/Canvas.
+    - Differentiators (Cards with Icons): Goal: Inform/Organize. Method: Cards with Unicode icons and text. Justification: Highlights unique selling points like expert-curated content and multilingual access. Library: HTML/CSS.
+    CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FBF8F6; /* Primary Background */
+            color: #5A5A5A; /* Accent Text/Darker Neutral */
+        }
+        .text-primary-accent {
+            color: #E76F51; /* Call to Action/Highlight */
+        }
+        .bg-card {
+            background-color: #FFFFFF; /* Secondary Background/Cards */
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+        }
+        .btn-action {
+            background-color: #E76F51; /* Call to Action/Highlight */
+            color: #FFFFFF;
+            transition: background-color 0.3s ease;
+        }
+        .btn-action:hover {
+            background-color: #d46045;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 280px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        .circular-diagram-container {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            margin: 0 auto;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px dashed #D4AF37; /* Subtle Accent 1 */
+        }
+        .circle-node {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background-color: #81B622; /* Subtle Accent 2 */
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .circle-text {
+            font-size: 0.75rem;
+            color: #5A5A5A;
+            position: absolute;
+            width: 120px;
+            text-align: center;
+        }
+        /* Positions for circular diagram nodes and text */
+        .node-center { top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: #E76F51; }
+        .node-top { top: 0; left: 50%; transform: translate(-50%, -50%); }
+        .node-right { top: 50%; right: 0; transform: translate(50%, -50%); }
+        .node-bottom { bottom: 0; left: 50%; transform: translate(-50%, 50%); }
+        .node-left { top: 50%; left: 0; transform: translate(-50%, -50%); }
+
+        .text-top { top: -30px; left: 50%; transform: translateX(-50%); }
+        .text-right { top: 50%; right: -60px; transform: translateY(-50%); }
+        .text-bottom { bottom: -30px; left: 50%; transform: translateX(-50%); }
+        .text-left { top: 50%; left: -60px; transform: translateY(-50%); }
+
+        .arrow {
+            position: absolute;
+            font-size: 2rem;
+            color: #D4AF37;
+            z-index: 5;
+        }
+        .arrow-top-right { top: 15%; right: 15%; transform: rotate(-45deg); }
+        .arrow-right-bottom { bottom: 15%; right: 15%; transform: rotate(45deg); }
+        .arrow-bottom-left { bottom: 15%; left: 15%; transform: rotate(135deg); }
+        .arrow-left-top { top: 15%; left: 15%; transform: rotate(-135deg); }
+    </style>
+</head>
+<body class="leading-relaxed">
+
+    <header class="bg-card shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <img src="image_58407a.jpg" alt="The Love Architects Logo" class="h-10 w-auto">
+            <nav class="hidden md:flex space-x-8">
+                <a href="#welcome" class="hover:text-primary-accent transition">Home</a>
+                <a href="#solution" class="hover:text-primary-accent transition">Our Solution</a>
+                <a href="#methodology" class="hover:text-primary-accent transition">Methodology</a>
+                <a href="#next-steps" class="hover:text-primary-accent transition">Next Steps</a>
+            </nav>
+            <a href="#contact" class="btn-action py-2 px-4 rounded-lg">Explore Resources</a>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-12 md:py-20">
+        
+        <section id="welcome" class="text-center mb-20 md:mb-32">
+            <h2 class="text-4xl md:text-6xl font-black mb-4 leading-tight">Your On-Demand Guide to Relationship Mastery.</h2>
+            <p class="text-lg md:text-xl text-5A5A5A max-w-3xl mx-auto">Our comprehensive suite of self-guided digital resources empowers you to cultivate fulfilling relationships at your own pace, providing actionable support for personal growth and relational harmony.</p>
+        </section>
+
+        <section id="challenges" class="mb-20 md:mb-32">
+            <h3 class="text-3xl md:text-4xl font-bold text-center mb-12">Flexible Learning for Continuous Growth</h3>
+            <p class="text-lg text-5A5A5A text-center max-w-3xl mx-auto mb-12">You seek continuous support and tools outside of formal coaching. We provide curated, trustworthy resources on your terms:</p>
+            <div class="max-w-4xl mx-auto space-y-4">
+                <div class="flex items-center space-x-4">
+                    <div class="text-2xl text-primary-accent">📈</div>
+                    <p class="font-medium">Desire for ongoing self-development and skill practice.</p>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <div class="text-2xl text-primary-accent">🤝</div>
+                    <p class="font-medium">Seeking connection with a like-minded community.</p>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <div class="text-2xl text-primary-accent">⏰</div>
+                    <p class="font-medium">Needing high-quality content accessible anytime, anywhere.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="solution" class="bg-FBF8F6 -mx-6 px-6 py-20 md:py-28 mb-20 md:mb-32">
+             <h3 class="text-3xl md:text-4xl font-bold text-center mb-12">Your Curated Library of Relational Growth Tools</h3>
+             <p class="text-lg text-5A5A5A text-center max-w-3xl mx-auto mb-12">Our diverse digital offerings are designed for intuitive, engaging, and impactful self-paced learning.</p>
+             <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="bg-card p-6 rounded-lg text-center">
+                    <div class="text-5xl mb-4 text-[#81B622]">📚</div>
+                    <h4 class="text-xl font-bold mb-2">E-books & Guides</h4>
+                    <p class="text-5A5A5A">In-depth guides on specific topics, providing foundational knowledge and actionable advice.</p>
+                </div>
+                <div class="bg-card p-6 rounded-lg text-center">
+                    <div class="text-5xl mb-4 text-[#81B622]">🧘</div>
+                    <h4 class="text-xl font-bold mb-2">Guided Meditations</h4>
+                    <p class="text-5A5A5A">Audio resources to foster self-awareness, emotional regulation, and mindful connection.</p>
+                </div>
+                <div class="bg-card p-6 rounded-lg text-center">
+                    <div class="text-5xl mb-4 text-[#81B622]">✍️</div>
+                    <h4 class="text-xl font-bold mb-2">Practical Exercises</h4>
+                    <p class="text-5A5A5A">Downloadable worksheets and prompts for self-reflection and skill practice (individual or couple).</p>
+                </div>
+                <div class="bg-card p-6 rounded-lg text-center">
+                    <div class="text-5xl mb-4 text-[#81B622]">💬</div>
+                    <h4 class="text-xl font-bold mb-2">Community Forum</h4>
+                    <p class="text-5A5A5A">A safe, supportive online space for connection, sharing experiences, and receiving encouragement.</p>
+                </div>
+             </div>
+        </section>
+
+        <section id="methodology" class="mb-20 md:mb-32">
+            <h3 class="text-3xl md:text-4xl font-bold text-center mb-16">Our Methodology: Empowering Self-Directed Growth</h3>
+            <p class="text-lg text-5A5A5A text-center max-w-3xl mx-auto mb-12">Our digital resources are designed to facilitate effective self-directed learning and continuous skill integration.</p>
+            <div class="circular-diagram-container">
+                <div class="circle-node node-center"><span class="text-2xl">YOU</span></div>
+
+                <div class="circle-node node-top">📚</div>
+                <div class="circle-text text-top">Knowledge Acquisition</div>
+
+                <div class="circle-node node-right">✍️</div>
+                <div class="circle-text text-right">Skill Practice</div>
+
+                <div class="circle-node node-bottom">💖</div>
+                <div class="circle-text text-bottom">Integration & Growth</div>
+
+                <div class="circle-node node-left">💬</div>
+                <div class="circle-text text-left">Community Support</div>
+
+                <div class="arrow arrow-top-right">➡️</div>
+                <div class="arrow arrow-right-bottom">➡️</div>
+                <div class="arrow arrow-bottom-left">➡️</div>
+                <div class="arrow arrow-left-top">➡️</div>
+            </div>
+
+            <div class="mt-16 bg-card p-8 rounded-lg max-w-2xl mx-auto">
+                <h5 class="font-bold text-center mb-4">Contribution of Digital Resource Types to Engagement & Growth</h5>
+                <div class="chart-container">
+                    <canvas id="engagementChart"></canvas>
+                </div>
+                <p class="text-center text-sm text-5A5A5A mt-2">Perceived Impact of Different Resource Formats on User Growth.</p>
+            </div>
+        </section>
+
+        <section id="differentiators" class="bg-FBF8F6 -mx-6 px-6 py-20 md:py-28 mb-20 md:mb-32">
+            <h3 class="text-3xl md:text-4xl font-bold text-center mb-12">Why Our Digital Resources Stand Out</h3>
+            <p class="text-lg text-5A5A5A text-center max-w-3xl mx-auto mb-12">Expert-designed for accessibility, our resources empower you with flexible, impactful learning.</p>
+            <div class="max-w-4xl mx-auto space-y-8">
+                <div class="flex items-start space-x-4 bg-card p-6 rounded-lg">
+                    <div class="text-4xl text-[#D4AF37]">✨</div>
+                    <div>
+                        <h4 class="text-xl font-bold mb-1">Expert-Curated & Actionable Content</h4>
+                        <p class="text-5A5A5A">Resources developed by Oscar and Meltem, ensuring quality, relevance, and a focus on practical, implementable strategies for real change.</p>
+                    </div>
+                </div>
+                <div class="flex items-start space-x-4 bg-card p-6 rounded-lg">
+                    <div class="text-4xl text-[#D4AF37]">🗣️</div>
+                    <div>
+                        <h4 class="text-xl font-bold mb-1">Multilingual Accessibility</h4>
+                        <p class="text-5A5A5A">Key resources are available in English, Spanish, and Turkish, providing comfort and deeper understanding for our diverse global clientele.</p>
+                    </div>
+                </div>
+                <div class="flex items-start space-x-4 bg-card p-6 rounded-lg">
+                    <div class="text-4xl text-[#D4AF37]">🌐</div>
+                    <div>
+                        <h4 class="text-xl font-bold mb-1">Flexible & Continuous Support</h4>
+                        <p class="text-5A5A5A">Learn at your own pace, anytime, anywhere, with a continually expanding library of tools and optional community engagement for ongoing encouragement.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="contact" class="text-center">
+            <h3 class="text-3xl md:text-4xl font-bold mb-4">Ready to Access Your Growth Toolkit?</h3>
+            <p class="text-lg text-5A5A5A max-w-2xl mx-auto mb-8">Empower yourself with immediate access to our expert-designed tools and a supportive community.</p>
+            <a href="mailto:contact@thelovearchitects.com" class="btn-action py-4 px-8 rounded-lg text-xl">Explore Digital Resources</a>
+        </section>
+
+    </main>
+    
+    <footer class="bg-5A5A5A text-white mt-20 md:mt-32">
+        <div class="container mx-auto px-6 py-8 text-center">
+            <p>&copy; 2025 The Love Architects. All Rights Reserved.</p>
+            <p class="text-sm text-gray-300 mt-2">Designing Your Foundation for Lasting Love.</p>
+        </div>
+    </footer>
+
+    <script>
+        const chartColors = {
+            mainAccent: '#E76F51', /* Call to Action/Highlight */
+            subtleAccent: '#81B622', /* Subtle Accent 2 */
+            lightGray: '#e5e7eb', /* For chart grids/labels */
+            darkNeutral: '#5A5A5A', /* For text within charts */
+            subtleGold: '#D4AF37' /* Subtle Accent 1 */
+        };
+
+        const chartTooltipOptions = {
+            plugins: {
+                tooltip: {
+                    callbacks: {
+                        title: function(tooltipItems) {
+                            const item = tooltipItems[0];
+                            let label = item.chart.data.labels[item.dataIndex];
+                            if (Array.isArray(label)) {
+                              return label.join(' ');
+                            }
+                            return label;
+                        }
+                    }
+                }
+            }
+        };
+        
+        function wrapLabel(str, maxWidth = 16) {
+            if (str.length <= maxWidth) {
+                return str;
+            }
+            const words = str.split(' ');
+            let lines = [];
+            let currentLine = '';
+            words.forEach(word => {
+                if ((currentLine + ' ' + word).trim().length > maxWidth && currentLine.length > 0) {
+                    lines.push(currentLine);
+                    currentLine = word;
+                } else {
+                    currentLine = (currentLine + ' ' + word).trim();
+                }
+            });
+            lines.push(currentLine);
+            return lines;
+        }
+
+        // Engagement & Growth Chart (Doughnut Chart)
+        const engagementLabels = ['E-books & Guides', 'Guided Meditations', 'Practical Exercises', 'Community Forum'].map(label => wrapLabel(label));
+        new Chart(document.getElementById('engagementChart'), {
+            type: 'doughnut',
+            data: {
+                labels: engagementLabels,
+                datasets: [{
+                    label: 'Perceived Impact on Growth',
+                    data: [30, 20, 35, 15],
+                    backgroundColor: [
+                        chartColors.subtleAccent,
+                        chartColors.subtleGold,
+                        chartColors.mainAccent,
+                        chartColors.darkNeutral
+                    ],
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                ...chartTooltipOptions,
+                maintainAspectRatio: false,
+                plugins: {
+                    ...chartTooltipOptions.plugins,
+                    legend: { position: 'bottom', labels: { color: chartColors.darkNeutral } }
+                }
+            }
+        });
+        
+        document.querySelectorAll('header nav a, a[href="#contact"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                     window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+    </script>
+</body>
+</html>

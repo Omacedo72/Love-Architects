@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Love Architects | Services Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Calm Harmony (Primary Background: #FBF8F6, Accent Text/Darker Neutral: #5A5A5A, Secondary Background/Cards: #FFFFFF, Subtle Accent 1: #D4AF37, Subtle Accent 2: #81B622, Call to Action: #E76F51) -->
+    <!-- Application Structure Plan: This SPA serves as the central navigation hub for all detailed service infographics. It features a welcoming hero section, followed by a responsive grid of clickable cards. Each card represents a core service, including a title, a brief value proposition, and an icon, functioning as a direct link to its corresponding detailed infographic SPA. This structure is designed for maximum discoverability and user-friendly navigation, allowing clients to quickly explore specific service offerings. -->
+    <!-- Visualization & Content Choices:
+    - Hero Section: Goal: Inform. Method: Large, inviting text with subtle color. Justification: Creates a warm and clear introduction to The Love Architects' mission. Library: HTML/CSS.
+    - Service Cards (Grid): Goal: Organize/Inform. Method: Tailwind-styled `div` elements, each containing a heading, a paragraph, and a Unicode icon. Each card is wrapped in an `<a>` tag linking to another SPA. Justification: Provides clear, scannable entry points to detailed service explanations, promoting exploration and ease of access. Library: HTML/CSS.
+    - Icons: Unicode characters (💖, 💑, 📚, ✨). Justification: Simple, effective, and adheres to the no-SVG constraint. Library: HTML/CSS.
+    CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FBF8F6; /* Primary Background */
+            color: #5A5A5A; /* Accent Text/Darker Neutral */
+        }
+        .text-primary-accent {
+            color: #E76F51; /* Call to Action/Highlight */
+        }
+        .bg-card {
+            background-color: #FFFFFF; /* Secondary Background/Cards */
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+        }
+        .btn-action {
+            background-color: #E76F51; /* Call to Action/Highlight */
+            color: #FFFFFF;
+            transition: background-color 0.3s ease;
+        }
+        .btn-action:hover {
+            background-color: #d46045;
+        }
+        .service-card {
+            @apply p-8 rounded-lg text-center flex flex-col justify-between;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%; /* Ensures cards in a row have equal height */
+        }
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.1);
+        }
+        .icon-color {
+            color: #81B622; /* Subtle Accent 2 */
+        }
+        .link-text-color {
+            color: #D4AF37; /* Subtle Accent 1 */
+        }
+    </style>
+</head>
+<body class="leading-relaxed">
+
+    <header class="bg-card shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <img src="[YOUR_BASE64_STRING_HERE]" alt="The Love Architects Logo" class="h-10 w-auto">
+            <nav class="hidden md:flex space-x-8">
+                <a href="#welcome" class="hover:text-primary-accent transition">Home</a>
+                <a href="#services-grid" class="hover:text-primary-accent transition">Our Services</a>
+            </nav>
+            <a href="#contact" class="btn-action py-2 px-4 rounded-lg">Connect With Us</a>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-12 md:py-20">
+        
+        <section id="welcome" class="text-center mb-20 md:mb-32">
+            <h2 class="text-4xl md:text-6xl font-black mb-4 leading-tight">Design Your Foundation for Lasting Love.</h2>
+            <p class="text-lg md:text-xl text-5A5A5A max-w-3xl mx-auto">At The Love Architects, we empower individuals and couples to build, maintain, and rediscover fulfilling partnerships through personalized coaching, expert-led workshops, and accessible digital resources.</p>
+        </section>
+
+        <section id="services-grid" class="mb-20 md:mb-32">
+            <h3 class="text-3xl md:text-4xl font-bold text-center mb-12">Our Core Services</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+                
+                <a href="tla_individual_coaching.html" class="block">
+                    <div class="service-card bg-card">
+                        <div>
+                            <div class="text-5xl mb-4 icon-color">💖</div>
+                            <h4 class="text-2xl font-bold mb-2">Individual Coaching Programs</h4>
+                            <p class="text-5A5A5A mb-4">Empowering you to find compatible partners, overcome personal relationship obstacles, and cultivate deep self-love.</p>
+                        </div>
+                        <div class="text-lg font-semibold link-text-color mt-4">Explore Individual Journey</div>
+                    </div>
+                </a>
+
+                <a href="tla_couples_coaching.html" class="block">
+                    <div class="service-card bg-card">
+                        <div>
+                            <div class="text-5xl mb-4 icon-color">💑</div>
+                            <h4 class="text-2xl font-bold mb-2">Couples Coaching Programs</h4>
+                            <p class="text-5A5A5A mb-4">Guiding partners to strengthen existing relationships, address specific issues, and co-create lasting harmony together.</p>
+                        </div>
+                        <div class="text-lg font-semibold link-text-color mt-4">Strengthen Your Partnership</div>
+                    </div>
+                </a>
+
+                <a href="tla_workshops_seminars.html" class="block">
+                    <div class="service-card bg-card">
+                        <div>
+                            <div class="text-5xl mb-4 icon-color">📚</div>
+                            <h4 class="text-2xl font-bold mb-2">Specialized Workshops & Seminars</h4>
+                            <p class="text-5A5A5A mb-4">Engage in focused, expert-led online or on-demand learning experiences to sharpen specific relational skills.</p>
+                        </div>
+                        <div class="text-lg font-semibold link-text-color mt-4">Enroll in Focused Learning</div>
+                    </div>
+                </a>
+
+                <a href="tla_digital_resources.html" class="block">
+                    <div class="service-card bg-card">
+                        <div>
+                            <div class="text-5xl mb-4 icon-color">✨</div>
+                            <h4 class="text-2xl font-bold mb-2">Digital Resources</h4>
+                            <p class="text-5A5A5A mb-4">Access self-guided tools, exercises, guided meditations, and community support for continuous, self-paced growth.</p>
+                        </div>
+                        <div class="text-lg font-semibold link-text-color mt-4">Discover Self-Paced Tools</div>
+                    </div>
+                </a>
+
+            </div>
+        </section>
+        
+        <section id="contact" class="text-center">
+            <h3 class="text-3xl md:text-4xl font-bold mb-4">Ready to Architect Your Love Life?</h3>
+            <p class="text-lg text-5A5A5A max-w-2xl mx-auto mb-8">Your journey to deeper connection and greater fulfillment starts here. Schedule your complimentary discovery call today.</p>
+            <a href="mailto:contact@thelovearchitects.com" class="btn-action py-4 px-8 rounded-lg text-xl">Schedule Your Discovery Call</a>
+        </section>
+
+    </main>
+    
+    <footer class="bg-5A5A5A text-white mt-20 md:mt-32">
+        <div class="container mx-auto px-6 py-8 text-center">
+            <p>&copy; 2025 The Love Architects. All Rights Reserved.</p>
+            <p class="text-sm text-gray-300 mt-2">Designing Your Foundation for Lasting Love.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

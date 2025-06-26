@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Love Architects | Couples Coaching</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Calm Harmony (Primary Background: #FBF8F6, Accent Text/Darker Neutral: #5A5A5A, Secondary Background/Cards: #FFFFFF, Subtle Accent 1: #D4AF37, Subtle Accent 2: #81B622, Call to Action: #E76F51) -->
+    <!-- Application Structure Plan: This SPA infographic is structured as a vertical, scrollable narrative. It starts with a warm hero section, identifies common relationship challenges, presents The Love Architects' unique solution (highlighting couple-led coaching), details the 3-phase methodology with relevant charts, showcases key differentiators, and concludes with a clear call to action. The flow emphasizes building and strengthening partnerships. -->
+    <!-- Visualization & Content Choices:
+    - Hero Section: Goal: Inform. Method: Large, inviting text with subtle color. Justification: Sets a welcoming and clear tone for couples. Library: HTML/CSS.
+    - Challenges (Big Numbers/Icons): Goal: Inform. Method: Large, bold HTML text with Unicode icons. Justification: Quickly highlights common relationship pain points. Library: HTML/CSS.
+    - Our Solution (Icon Grid with Special Highlight): Goal: Organize/Inform. Method: Unicode characters styled with Tailwind CSS cards. Highlights the unique couple-led approach. Justification: Presents core solution pillars clearly. Library: HTML/CSS.
+    - Methodology Flow (Vertical Timeline): Goal: Organize/Change (process). Method: Structured HTML divs as cards in a vertical sequence, with connecting lines. Justification: Clearly illustrates the structured coaching process for couples. Library: HTML/CSS.
+    - Phase 1 Chart (Communication & Conflict Baseline): Goal: Inform/Compare. Chosen Viz: Stacked Bar Chart. Justification: Shows the current state of relational health indicators. Library: Chart.js/Canvas.
+    - Phase 2 Chart (Intimacy & Connection Growth): Goal: Change. Chosen Viz: Line Chart. Justification: Tracks projected growth in key areas like intimacy and shared vision. Library: Chart.js/Canvas.
+    - Phase 3 Chart (Relational Resilience): Goal: Inform. Chosen Viz: Doughnut Chart. Justification: Shows the balanced outcome of a strengthened partnership. Library: Chart.js/Canvas.
+    - Unique Differentiators (List with Icons): Goal: Inform/Organize. Method: Bullet points with Unicode icons. Justification: Clearly lists competitive advantages. Library: HTML/CSS.
+    CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FBF8F6; /* Primary Background */
+            color: #5A5A5A; /* Accent Text/Darker Neutral */
+        }
+        .text-primary-accent {
+            color: #E76F51; /* Call to Action/Highlight */
+        }
+        .bg-card {
+            background-color: #FFFFFF; /* Secondary Background/Cards */
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+        }
+        .btn-action {
+            background-color: #E76F51; /* Call to Action/Highlight */
+            color: #FFFFFF;
+            transition: background-color 0.3s ease;
+        }
+        .btn-action:hover {
+            background-color: #d46045;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 280px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        .phase-timeline-connector {
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: #e5e7eb;
+        }
+        .phase-dot {
+            position: absolute;
+            left: 10px;
+            top: 0;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: #81B622; /* Subtle Accent 2 */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: bold;
+            z-index: 10;
+        }
+        .phase-content {
+            padding-left: 40px;
+            position: relative;
+        }
+    </style>
+</head>
+<body class="leading-relaxed">
+
+    <header class="bg-card shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <img src="image_58407a.jpg" alt="The Love Architects Logo" class="h-10 w-auto">
+            <nav class="hidden md:flex space-x-8">
+                <a href="#welcome" class="hover:text-primary-accent transition">Home</a>
+                <a href="#challenges" class="hover:text-primary-accent transition">Challenges</a>
+                <a href="#methodology" class="hover:text-primary-accent transition">Our Process</a>
+                <a href="#next-steps" class="hover:text-primary-accent transition">Next Steps</a>
+            </nav>
+            <a href="#contact" class="btn-action py-2 px-4 rounded-lg">Start Your Journey</a>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-12 md:py-20">
+        
+        <section id="welcome" class="text-center mb-20 md:mb-32">
+            <h2 class="text-4xl md:text-6xl font-black mb-4 leading-tight">Co-Create Your Resilient & Passionate Partnership.</h2>
+            <p class="text-lg md:text-xl text-5A5A5A max-w-3xl mx-auto">Our Couples Coaching Programs are uniquely crafted to empower partners to strengthen their bond, navigate challenges, and reignite connection for a fulfilling, lasting love story.</p>
+        </section>
+
+        <section id="challenges" class="mb-20 md:mb-32">
+            <h3 class="text-3xl md:text-4xl font-bold text-center mb-12">Navigating Relationship Complexities</h3>
+            <p class="text-lg text-5A5A5A text-center max-w-3xl mx-auto mb-12">Even strong relationships face hurdles. We address common challenges that can erode connection:</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+                <div class="bg-card p-8 rounded-lg">
+                    <div class="text-5xl font-extrabold text-primary-accent mb-4">💬</div>
+                    <p class="font-medium">Communication breakdowns & misunderstandings</p>
+                </div>
+                <div class="bg-card p-8 rounded-lg">
+                    <div class="text-5xl font-extrabold text-primary-accent mb-4">💔</div>
+                    <p class="font-medium">Persistent conflicts & unresolved issues</p>
+                </div>
+                <div class="bg-card p-8 rounded-lg">
+                    <div class="text-5xl font-extrabold text-primary-accent mb-4">🌐</div>
+                    <p class="font-medium">Challenges in international/cross-cultural relationships</p>
+                </div>
+                <div class="bg-card p-8 rounded-lg">
+                    <div class="text-5xl font-extrabold text-primary-accent mb-4">🔥</div>
+                    <p class="font-medium">Dwindling intimacy & emotional connection</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="solution" class="bg-FBF8F6 -mx-6 px-6 py-20 md:py-28 mb-20 md:mb-32">
+             <h3 class="text-3xl md:text-4xl font-bold text-center mb-12">Your Blueprint for a Thriving Partnership</h3>
+             <p class="text-lg text-5A5A5A text-center max-w-3xl mx-auto mb-12">Our couples coaching provides tailored guidance to overcome challenges and deepen your bond, leveraging a truly unique approach.</p>
+             <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10">
+                <div class="flex items-start space-x-6">
+                    <div class="text-4xl text-[#81B622]">💑</div>
+                    <div>
+                        <h4 class="text-xl font-bold mb-2">Pioneering Couple-Led Coaching</h4>
+                        <p class="text-5A5A5A">Oscar and Meltem coach you simultaneously, offering real-time male and female perspectives, modeling healthy dynamics, and providing balanced insights.</p>
+                    </div>
+                </div>
+                <div class="flex items-start space-x-6">
+                    <div class="text-4xl text-[#81B622]">🗣️</div>
+                    <div>
+                        <h4 class="text-xl font-bold mb-2">Communication & Conflict Resolution</h4>
+                        <p class="text-5A5A5A">Acquire practical tools to enhance listening, express needs effectively, and navigate disagreements constructively.</p>
+                    </div>
+                </div>
+                <div class="flex items-start space-x-6">
+                    <div class="text-4xl text-[#81B622]">🌍</div>
+                    <div>
+                        <h4 class="text-xl font-bold mb-2">International Relationship Specialization</h4>
+                        <p class="text-5A5A5A">Expert guidance for unique cultural, communication, and logistical challenges faced by international, cross-cultural, or long-distance couples.</p>
+                    </div>
+                </div>
+                <div class="flex items-start space-x-6">
+                    <div class="text-4xl text-[#81B622]">💖</div>
+                    <div>
+                        <h4 class="text-xl font-bold mb-2">Reigniting Intimacy & Connection</h4>
+                        <p class="text-5A5A5A">Explore strategies to deepen emotional connection, foster vulnerability, and rekindle passion in your relationship.</p>
+                    </div>
+                </div>
+             </div>
+        </section>
+
+        <section id="methodology" class="mb-20 md:mb-32">
+            <h3 class="text-3xl md:text-4xl font-bold text-center mb-16">Our 3-Phase Couples Coaching Methodology</h3>
+            <p class="text-lg text-5A5A5A text-center max-w-3xl mx-auto mb-12">Our structured methodology builds a stronger, more harmonious partnership, one intentional step at a time.</p>
+            <div class="relative max-w-xl mx-auto">
+                <div class="phase-timeline-connector"></div>
+
+                <div class="mb-12 phase-content">
+                    <div class="phase-dot">1</div>
+                    <div class="bg-card p-8 rounded-lg">
+                        <h4 class="text-xl font-bold mb-2">Phase 1: Shared Discovery & Dynamic Assessment</h4>
+                        <p class="text-5A5A5A mb-6">We collaboratively understand your current dynamics, identify core challenges, and co-create a clear, shared vision for your partnership's future.</p>
+                        <h5 class="font-bold text-center mb-2">Outcome: Relational Baseline</h5>
+                        <div class="chart-container">
+                            <canvas id="baselineChart"></canvas>
+                        </div>
+                        <p class="text-center text-sm text-5A5A5A mt-2">Perceived Strength of Key Relationship Aspects</p>
+                    </div>
+                </div>
+
+                <div class="mb-12 phase-content">
+                    <div class="phase-dot">2</div>
+                    <div class="bg-card p-8 rounded-lg">
+                        <h4 class="text-xl font-bold mb-2">Phase 2: Strategic Intervention & Skill Implementation</h4>
+                        <p class="text-5A5A5A mb-6">Introduce and practice targeted communication, conflict resolution techniques, and intimacy-building strategies tailored to your unique relational needs.</p>
+                        <h5 class="font-bold text-center mb-2">Outcome: Enhanced Connection</h5>
+                        <div class="chart-container">
+                            <canvas id="connectionChart"></canvas>
+                        </div>
+                        <p class="text-center text-sm text-5A5A5A mt-2">Projected Growth in Key Connection Areas</p>
+                    </div>
+                </div>
+
+                <div class="phase-content">
+                    <div class="phase-dot">3</div>
+                    <div class="bg-card p-8 rounded-lg">
+                        <h4 class="text-xl font-bold mb-2">Phase 3: Integration, Resilience & Sustained Partnership</h4>
+                        <p class="text-5A5A5A mb-6">Integrate new patterns into your daily interactions, build relational resilience, and establish practices for continuous growth and fulfillment as a couple.</p>
+                        <h5 class="font-bold text-center mb-2">Outcome: Harmonious Partnership</h5>
+                        <div class="chart-container">
+                            <canvas id="harmonyChart"></canvas>
+                        </div>
+                        <p class="text-center text-sm text-5A5A5A mt-2">Achieved Harmony & Fulfillment in the Partnership</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="differentiators" class="bg-FBF8F6 -mx-6 px-6 py-20 md:py-28 mb-20 md:mb-32">
+            <h3 class="text-3xl md:text-4xl font-bold text-center mb-12">Why Choose The Love Architects for Your Partnership</h3>
+            <p class="text-lg text-5A5A5A text-center max-w-3xl mx-auto mb-12">Our unique expertise offers unparalleled depth and balance for your couples coaching journey.</p>
+            <div class="max-w-4xl mx-auto space-y-8">
+                <div class="flex items-start space-x-4 bg-card p-6 rounded-lg">
+                    <div class="text-4xl text-[#D4AF37]">✨</div>
+                    <div>
+                        <h4 class="text-xl font-bold mb-1">Dual-Perspective Coaching</h4>
+                        <p class="text-5A5A5A">Benefit from the combined insights of Oscar and Meltem, providing both male and female expert perspectives to model healthy interaction and offer balanced guidance.</p>
+                    </div>
+                </div>
+                <div class="flex items-start space-x-4 bg-card p-6 rounded-lg">
+                    <div class="text-4xl text-[#D4AF37]">🗣️</div>
+                    <div>
+                        <h4 class="text-xl font-bold mb-1">Culturally Intelligent & Multilingual</h4>
+                        <p class="text-5A5A5A">Receive coaching comfortably in English, Spanish, or Turkish, with specialized understanding for international, cross-cultural, or long-distance relationship nuances.</p>
+                    </div>
+                </div>
+                <div class="flex items-start space-x-4 bg-card p-6 rounded-lg">
+                    <div class="text-4xl text-[#D4AF37]">🛠️</div>
+                    <div>
+                        <h4 class="text-xl font-bold mb-1">Action-Oriented & Skill-Based</h4>
+                        <p class="text-5A5A5A">We focus on providing you with practical tools and actionable strategies to immediately improve communication, resolve conflict, and deepen your emotional bond.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="contact" class="text-center">
+            <h3 class="text-3xl md:text-4xl font-bold mb-4">Ready to Build a Stronger Foundation Together?</h3>
+            <p class="text-lg text-5A5A5A max-w-2xl mx-auto mb-8">Your journey to a more resilient and passionate partnership starts here. Schedule your complimentary discovery call today.</p>
+            <a href="mailto:contact@thelovearchitects.com" class="btn-action py-4 px-8 rounded-lg text-xl">Schedule Your Discovery Call</a>
+        </section>
+
+    </main>
+    
+    <footer class="bg-5A5A5A text-white mt-20 md:mt-32">
+        <div class="container mx-auto px-6 py-8 text-center">
+            <p>&copy; 2025 The Love Architects. All Rights Reserved.</p>
+            <p class="text-sm text-gray-300 mt-2">Designing Your Foundation for Lasting Love.</p>
+        </div>
+    </footer>
+
+    <script>
+        const chartColors = {
+            mainAccent: '#E76F51', /* Call to Action/Highlight */
+            subtleAccent: '#81B622', /* Subtle Accent 2 */
+            lightGray: '#e5e7eb', /* For chart grids/labels */
+            darkNeutral: '#5A5A5A', /* For text within charts */
+            subtleGold: '#D4AF37' /* Subtle Accent 1 */
+        };
+
+        const chartTooltipOptions = {
+            plugins: {
+                tooltip: {
+                    callbacks: {
+                        title: function(tooltipItems) {
+                            const item = tooltipItems[0];
+                            let label = item.chart.data.labels[item.dataIndex];
+                            if (Array.isArray(label)) {
+                              return label.join(' ');
+                            }
+                            return label;
+                        }
+                    }
+                }
+            }
+        };
+        
+        function wrapLabel(str, maxWidth = 16) {
+            if (str.length <= maxWidth) {
+                return str;
+            }
+            const words = str.split(' ');
+            let lines = [];
+            let currentLine = '';
+            words.forEach(word => {
+                if ((currentLine + ' ' + word).trim().length > maxWidth && currentLine.length > 0) {
+                    lines.push(currentLine);
+                    currentLine = word;
+                } else {
+                    currentLine = (currentLine + ' ' + word).trim();
+                }
+            });
+            lines.push(currentLine);
+            return lines;
+        }
+
+        // Phase 1 Chart: Relational Baseline (Stacked Bar)
+        const baselineLabels = ['Communication', 'Conflict Resolution', 'Intimacy', 'Shared Vision'].map(label => wrapLabel(label));
+        new Chart(document.getElementById('baselineChart'), {
+            type: 'bar',
+            data: {
+                labels: baselineLabels,
+                datasets: [
+                    {
+                        label: 'Areas for Growth',
+                        data: [4, 5, 6, 4],
+                        backgroundColor: chartColors.mainAccent,
+                    },
+                    {
+                        label: 'Current Strengths',
+                        data: [6, 5, 4, 6],
+                        backgroundColor: chartColors.subtleAccent,
+                    }
+                ]
+            },
+            options: {
+                ...chartTooltipOptions,
+                maintainAspectRatio: false,
+                indexAxis: 'y', // Horizontal bars
+                scales: {
+                    x: {
+                        stacked: true,
+                        beginAtZero: true,
+                        max: 10,
+                        title: { display: true, text: 'Perceived Strength (0-10 Scale)', color: chartColors.darkNeutral },
+                        ticks: { color: chartColors.darkNeutral }
+                    },
+                    y: {
+                        stacked: true,
+                        ticks: { color: chartColors.darkNeutral }
+                    }
+                },
+                plugins: {
+                    ...chartTooltipOptions.plugins,
+                    legend: { position: 'bottom', labels: { color: chartColors.darkNeutral } }
+                }
+            }
+        });
+
+        // Phase 2 Chart: Connection Growth (Line Chart)
+        new Chart(document.getElementById('connectionChart'), {
+            type: 'line',
+            data: {
+                labels: ['Start', 'Month 1', 'Month 2', 'Month 3'],
+                datasets: [
+                    {
+                        label: 'Emotional Connection Score',
+                        data: [5, 6.5, 8, 9],
+                        fill: true,
+                        backgroundColor: 'rgba(229, 111, 81, 0.2)',
+                        borderColor: chartColors.mainAccent,
+                        tension: 0.3,
+                        pointBackgroundColor: chartColors.subtleGold,
+                        pointRadius: 5
+                    },
+                    {
+                        label: 'Communication Effectiveness Score',
+                        data: [4, 5.5, 7, 8.5],
+                        fill: true,
+                        backgroundColor: 'rgba(129, 182, 34, 0.2)',
+                        borderColor: chartColors.subtleAccent,
+                        tension: 0.3,
+                        pointBackgroundColor: chartColors.subtleGold,
+                        pointRadius: 5
+                    }
+                ]
+            },
+            options: {
+                ...chartTooltipOptions,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 10,
+                        title: { display: true, text: 'Score (0-10)', color: chartColors.darkNeutral },
+                        ticks: { color: chartColors.darkNeutral }
+                    },
+                    x: {
+                        ticks: { color: chartColors.darkNeutral }
+                    }
+                },
+                plugins: {
+                    ...chartTooltipOptions.plugins,
+                    legend: { position: 'bottom', labels: { color: chartColors.darkNeutral } }
+                }
+            }
+        });
+
+        // Phase 3 Chart: Harmonious Partnership (Doughnut Chart)
+        const harmonyLabels = ['Shared Vision & Goals', 'Effective Communication', 'Intimacy & Affection', 'Conflict Resolution'].map(label => wrapLabel(label));
+        new Chart(document.getElementById('harmonyChart'), {
+            type: 'doughnut',
+            data: {
+                labels: harmonyLabels,
+                datasets: [{
+                    label: 'Contribution to Overall Harmony',
+                    data: [25, 30, 20, 25],
+                    backgroundColor: [
+                        chartColors.subtleAccent,
+                        chartColors.mainAccent,
+                        chartColors.subtleGold,
+                        chartColors.darkNeutral
+                    ],
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                ...chartTooltipOptions,
+                maintainAspectRatio: false,
+                plugins: {
+                    ...chartTooltipOptions.plugins,
+                    legend: { position: 'bottom', labels: { color: chartColors.darkNeutral } }
+                }
+            }
+        });
+        
+        document.querySelectorAll('header nav a, a[href="#contact"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                     window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+    </script>
+</body>
+</html>
